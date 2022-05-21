@@ -8,30 +8,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header>
         <img src="./Img/Logo.png">
     </header>
-    <main>
-        <section>
-            <textarea type="text" class="input-text" cols="40" rows="6" placeholder="Ingrese el texto aqui" autofocus></textarea>
-            <h6>Solo letras minúsculas y sin acentos</h6>
-            <div>
-                <button type="button" onclick="botonEncriptar()"> Encriptar </button>
-                <button type="button" onclick="botonDesencriptar()"> Descencriptar </button>
-            </div>
 
-        </section>
-        <section>
-            <textarea type="text" class="input-text-area" cols="18" rows="8" readonly></textarea>
-            <div> 
-                <button type="button" onclick="botonCopiar()"> Copiar </button>
+    <main>
+        <button id="botonCopiar" type="button" onclick="botonCopiar()" onmouseout="descripcion()">
+            <span id="descripcionCopiar">Copiar texto</span>
+        </button>
+        <div class="seccion">
+            <textarea type="text" class="input-text" placeholder="Ingrese el texto aquí" ></textarea>
+            <h6>
+                <img src="./Img/Exclamacion.png"></img>
+                <div> Solo letras minúsculas y sin acentos</div>
+            </h6>
+            <div class="botones">
+                <button class="botonEncriptar" type="button" onclick="botonEncriptar()"> Encriptar </button>
+                <button class="botonDesencriptar" type="button"  onclick="botonDesencriptar()"> Descencriptar </button>
             </div>
-        </section>
+        </div>
+        <div class="seccion">
+            <textarea type="text" class="cifrado-text" placeholder="Ningún mensaje fue encontrado" readonly></textarea>
+        </div>
+        
     </main>
+    
+   
     
 </body>
 

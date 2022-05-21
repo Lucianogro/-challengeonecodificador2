@@ -1,30 +1,36 @@
 const inputTexto = document.querySelector(".input-text");
-const mensaje = document.querySelector(".input-text-area");
+const mensaje = document.querySelector(".cifrado-text");
+var botoncopiar = document.getElementById("botonCopiar");
+var descripcioncopiar = document.getElementById("descripcionCopiar");
+
 
 botonEncriptar = () => {
     const textoEncriptado = encriptar(inputTexto.value);
     mensaje.value = textoEncriptado;
+    mostrarCopiar();
     inputTexto.value = "";
-    inputTexto.focus();
+    mensaje.focus();
 }
 
 botonDesencriptar = () => {
     const textoDesencriptado = desencriptar(inputTexto.value);
     mensaje.value = textoDesencriptado;
+    mostrarCopiar();
     inputTexto.value = "";
-    inputTexto.focus();
+    mensaje.focus();
 }
 
+
 botonCopiar = () => {
-    if (mensaje.value != ""){
-        mensaje.select();
+    mensaje.select();
 
-        navigator.clipboard.writeText(mensaje.value);
+    descripcioncopiar.innerHTML = "Copiado: " + mensaje.value;
 
-        alert("Se ha copiado el texto. ");
+    navigator.clipboard.writeText(mensaje.value);
 
-        mensaje.value = "";      
-    }
+    mensaje.value = "";      
+    
+    ocultarCopiar();
 
     inputTexto.focus();
 }
@@ -48,7 +54,6 @@ encriptar = (texto) => {
             texto = texto.replaceAll(matrizCodigo[i][0],matrizCodigo[i][1]);
         }
     }
-
     return texto;
 
 }
@@ -73,4 +78,18 @@ desencriptar = (texto) => {
     }
 
     return texto;
+}
+
+descripcion = () => {
+    descripcioncopiar.innerHTML = "Copiar texto";
+}
+
+mostrarCopiar = () =>{
+    if(mensaje.value!=""){
+        botoncopiar.style.visibility = "visible";
+    }
+}
+
+ocultarCopiar = () => {
+    botoncopiar.style.visibility = "hidden";
 }
